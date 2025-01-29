@@ -6,29 +6,45 @@
     <link rel="stylesheet" href="dist/reveal.css">
     <link rel="stylesheet" href="dist/theme/white.css" />
 
+
+    <!-- zoomR figures when hovering -->
     <style>
-      .zoom {
+      .zoomR {
+	  transition: transform .5s; /* Animation */
+	  margin: 0;
+	  background-color: white;
+      }
+
+      .zoomR:hover {right: 50%;
+		    transform:  translate(50%) scale(1.5); /* (150% zoomR - Note: if the zoomR is too large, it will go outside of the viewport) */
+		    box-shadow: 0px 0px 10px 1200px rgba(0,0,0,0.3);
+		   }
+    </style>
+
+    <style>
+      .zoomL {
 	  transition: transform .2s; /* Animation */
 	  margin: 0;
 	  background-color: white;
       }
 
-      .zoom:hover {
-	  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-	  box-shadow: 0px 0px 10px 1200px rgba(0,0,0,0.3);
-      }
+      .zoomL:hover {right: 50%;
+		    transform:  translate(-50%) scale(1.5); /* (150% zoomR - Note: if the zoomR is too large, it will go outside of the viewport) */
+		    box-shadow: 0px 0px 10px 1200px rgba(0,0,0,0.3);
+		   }
     </style>
+    
   </head>
   <body>
 
     <div class="reveal">
       <div class="slides">
 
-	<!-- Slide 0 -->
-	  <section style="height: 100%; margin-top: 3%;"  data-background-video="abp-background.mp4" data-background-video-loop="true" data-background-opacity="0.25"> 
+	<!-- Title Slide -->
+	<section style="height: 100%; margin-top: 3%;"  data-background-video="media/abp-background.mp4" data-background-video-loop="true" data-background-opacity="0.25"> 
 	  <div id="content" >
 	    
-            <div style="margin-top: 15%;" data-background-video="abp-background.mp4"data-background-video-loop data-background-video-muted>
+            <div style="margin-top: 15%;" data-background-video="media/abp-background.mp4"data-background-video-loop data-background-video-muted>
               <h5>Seminar in Simulation and Computational Modelling I</h5>
               <h1>Active Matter</h1>
               <h4>Critical Phenomena in Far From Equilibrium Systems</h4>
@@ -38,88 +54,65 @@
 	    
 	    <img style="bottom: 0;
 			width: 200px;
-			margin: 5%;" data-src="uc_logo.png" />
+			margin: 5%;" data-src="media/uc_logo.png" />
 
 	  </div>	  
 	</section>
-	  
-	<!-- <\!-- Slide 1 -\-> -->
-	<!-- <section style="height: 100%; margin-top: 3%;"> -->
-	<!--   <h2>Contents</h2> -->
-	<!--   <div style="margin-left: 10%; margin-right: 10%; float: left; margin-top: 5%; font-size:35px;"> -->
-	<!--     <ol> -->
-	<!--       <li>What is active matter?</li> -->
-	<!--       <li>Flocking</li> -->
-	<!--       <ul> -->
-	<!-- 	<li>The Vicsek model</li> -->
-	<!-- 	<li>The Mermin-Wagner-Hohenberg Theorem</li> -->
-	<!-- 	<li>The nature of the phase transition</li> -->
-	<!--       </ul> -->
-	<!--       <li>Active Brownian Particles (ABPs)</li> -->
-	<!--       <ul> -->
-	<!-- 	<li>Brownian Motion and Activity</li> -->
-	<!-- 	<li>Modelling ABPs</li> -->
-	<!-- 	<li>Phase-Diagram of 2D ABP systems</li> -->
-	<!--       </ul> -->
-	<!--       <li>Conclusion</li> -->
-	<!--       <ol> -->
-	<!--   </div> -->
-	<!-- </section> -->
 
 	
-	<!-- Slide 2 -->
+	<!-- Slide 1 -->
 	<section style="height: 100%; margin-top: 3%;">
 	  <h2>Active Matter </h2>
 	  <div style="margin-left: 10%; margin-right: 10%; font-size:30px;">
 	    <p style="margin:0;" align="left"><b>Definition:</b> systems in which individual constituents consume energy from their surroundings to generate motion and mechanical stress.</p>	    
-	    <!-- <p style="margin:0;" align="left"><b>Examples:</b> -->
 
-	      <div style="margin-top: 3%;font-size:30px;
-			  display: flex;
-			  ">
+	    <div style="margin-top: 3%;font-size:30px;
+			display: flex;
+			">
 
-		<div style="width:800px;">
-		  <video height="500px" controls="true">
-		    <source src="ecoli-2.mp4" type="video/mp4" >
-		  </video>
-		</div>
+	      <div style="width:800px;">
+		<video height="500px" controls="true">
+		  <source src="media/ecoli-2.mp4" type="video/mp4" >
+		</video>
+	      </div>
+	      
+
+	      <div style="width:900px;">
+		<p class="fragment"><b>Key aspects:</b></p>
+		<ul class="fragment">
+		  <li class="fragment"> Inherently out of equilibrium
+		  <li class="fragment"> Emergent <b>self-organisation</b>, <b>complex and collective behaviours</b>
+		  <li class="fragment"> Present across different time and length scales
+		</ul>
+
 		
+		<p class="fragment"><b>Questions:</b></p>
+		<ul class="fragment">
+		  <li class="fragment"> How do we study these systems?
+		  <li class="fragment"> Can our theories and techniques for equilibrium systems be extended?
+		</ul>
+	      </div>
+	    </div>	  
 
-		<div style="width:900px;">
-		  <p class="fragment"><b>Key aspects:</b></p>
-		  <ul class="fragment">
-		    <li class="fragment"> Inherently out of equilibrium
-		    <li class="fragment"> Emergent <b>self-organisation</b>, <b>complex and collective behaviours</b>
-		    <li class="fragment"> Present across different time and length scales
-		  </ul>
-
-		  
-		  <p class="fragment"><b>Questions:</b></p>
-		  <ul class="fragment">
-		    <li class="fragment"> How do we study these systems?
-		    <li class="fragment"> Can our theories and techniques for equilibrium systems be extended?
-		  </ul>
-		</div>
-	      </div>	  
-
-	  <!-- References -->
+	    <!-- References -->
 	    <p  style="position:absolute;
 		       width: 100%;
 		       bottom: -5%;
 		       left:5%;
 		       text-align: left;
-		       font-size: 20px;
+		       font-size: 25px;
 		       white-space: pre-line;
 		       ">
-	    [1] Matthew Copeland, University of Wisconsin, Madison, https://www.youtube.com/watch?v=q27Jn3h4kpE
+	      [1] Matthew Copeland, University of Wisconsin, Madison, https://www.youtube.com/watch?v=q27Jn3h4kpE
 	    </p>
-	    
+
+	    <!-- Manual Page Number -->
 	    <p  style="position:absolute;
 		       width: 100%;
 		       bottom: -5%;
 		       right:5%;
 		       text-align: right;
-		       font-size: 20px;
+		       font-size: 25px;
 		       white-space: pre-line;
 		       ">1
 	    </p>
@@ -129,906 +122,908 @@
 	
 
 	
-	<section>
-	  <!-- Slide 2.
-	       1 -->
-	  <section style="height: 100%; margin-top: 3%;"  data-background-video="birds.mp4"data-background-video-loop data-background-video-muted data-background-opacity="0.60">
-	    <h2 style="top 0; color:black;">Flocking and the Vicsek Model</h2>
+	<!-- Slide 2 -->
+	<section style="height: 100%; margin-top: 3%;"  data-background-video="media/birds.mp4"data-background-video-loop data-background-video-muted data-background-opacity="0.40">
+	  <h2 style="top 0; color:black;">Flocking and the Vicsek Model</h2>
 
-	    <div class="fragment" style="position: absolute;
-					 left: 20%;
-					 top: 25%;
-					 font-size: 35px;
-					 color:black;
-					 ">
-	      \begin{align}
-	      \mathbf{r}_i(&t+\Delta t) = \mathbf{r}_i(t) + \mathbf{v_i}(t)\Delta t\\
-	      \theta_i(&t+\Delta t) = \langle\theta_i(t)\rangle_r + \eta \xi_i\\
-	      &\eta \in [0, 1], \quad \xi_i \in [0,2\pi]
-	      \end{align}
-	      
-	    </div>
+
+	  <p class="fragment" style="position:absolute;
+				     left:10%;
+				     top:15%;
+				     ">In 2 dimensions:</p>
+	  <div class="fragment" style="position: absolute;
+				       left: 15%;
+				       top: 25%;
+				       font-size: 35px;
+				       color:black;
+				       ">
+	    \begin{align}
+	    &\mathbf{r}_i(t+\Delta t) = \mathbf{r}_i(t) + \mathbf{v_i}(t)\Delta t, \quad \mathbf{v_i}=v\theta_i\\
+	    &\theta_i(t+\Delta t) = \langle\theta_i(t)\rangle_r + \xi_i \\
+	    &\xi_i \in [-\eta,\eta], \quad \eta \in [0,\pi]
+	    \end{align}
 	    
-	    <div class="fragment fade-in-then-out">
-	      <img style="position: absolute;
-			  top: 22%;
-			  right: 18%;
-			  width: 23%;
-			  margin: 0;"  data-src="vicsek_diagram.png"/>
-	    </div>
-	    
-	    <div class="fragment fade-in-then-out">
-	      <img style="position: absolute;
-			  top: 22%;
-			  right: 18%;
-			  width: 23%;
-			  margin: 0;"  data-src="vicsek_diagram_2.png"/>
-	    </div>
-	    
-	    
-	    <div class="fragment">
-	      <img style="position: absolute;
-			  top: 22%;
-			  right: 18%;
-			  width: 23%;
-			  margin: 0;"  data-src="vicsek_diagram_3.png"/>
-	    </div>
-	    
-	    <div class="fragment" style="
-					 position: absolute;
-					 top: 48%;
-					 width: 40%;
-					 left: 13%;
-					 font-size: 32px;
-					 color:black;">
-	      \[
-	      \begin{align}
-	      \text{Order parameter:} \quad \phi = \frac{1}{Nv}\left|\sum_{i=1}^N\mathbf{v_i}\right| \\
-	      \text{(disordered)} \quad 0 \leq \phi \leq 1 \quad \text{(ordered)}
-	      \end{align}
-	      \]
-	      
-	    </div>
-
-	    <!-- References -->
-	    <p  style="position:absolute;
-		       width: 100%;
-		       bottom: -5%;
-		       left:5%;
-		       text-align: left;
-		       font-size: 20px;
-		       white-space: pre-line;
-		       color:white;
-		       ">
-	      [2] Jan van IJken / www.janvanijken.com</p>
-
-	    <p  style="position:absolute;
-		       width: 100%;
-		       bottom: -5%;
-		       right:5%;
-		       text-align: right;
-		       font-size: 20px;
-		       white-space: pre-line;
-		       color:white;
-		       ">2
-	    </p>
-	    
-	  </section>
-	  
-
-	  <!-- Slide 2.2 -->
-	  <section style="height: 100%; margin-top: 3%;" >
-	    <h2 style="top 0">Flocking and the Vicsek Model</h2>
-	    <div style="margin-top: 3%;">
-
-	      <div style="display: inline-flex">
-		<div style="width: 425px; margin: 0;"> 
-		  <img class="zoom"  style="margin: 0;" data-src="original-vicsek-plots.png"/>
-		  <p style="margin:1%;
-			    font-size:20px;
-			    text-align:left;">[3]</p>
-		</div>
-		<div style="margin: 0; font-size: 25px; width: 1200px">
-		  <div id="explorable_container"></div>
-		  <p style="margin:1%;
-			    font-size:20px;
-			    text-align:right;">[4]</p>
-		  </div>
-	      </div>
-
-
-	      <div class="fragment" style="
-					   position:absolute;
-					   width: 100%;
-					   bottom: 18%;
-					   text-align: center;
-					   font-size: 25px;">
-		\[\phi \approx (\eta_c(\rho)-\eta)^\beta \quad \text{ with } \quad \beta = 0.45\pm 0.07\]
-	      </div>
-	      <p class="fragment" style="
-			position:absolute;
-			width: 100%;
-			bottom: 10%;
-			text-align: center;
-			font-size: 35px;">
-		Second-order phase transition?
-	      </p>
-	    </div>
-	    
-	    
-	    <!-- References -->
-	    <p  style="position:absolute;
-		       width: 100%;
-		       bottom: -5%;
-		       left:5%;
-		       text-align: left;
-		       font-size: 20px;
-		       white-space: pre-line;
-		       ">
-	      [3] Vicsek <i>et al.</i> Phys. Rev. Lett. 75.1226 A (1995)
-	      [4] Dirk Brockmann, Complexity Explorables 
-	    </p>
-	    <p  style="position:absolute;
-		       width: 100%;
-		       bottom: -5%;
-		       right:5%;
-		       text-align: right;
-		       font-size: 20px;
-		       white-space: pre-line;
-		       ">3
-	    </p>
-	  </section>
-	  
-	  
-	  <!-- Slide 2.3 -->
-	  <section style="height: 100%; margin-top: 3%;" >
-	    <h2 style="top 0">Flocking and the Vicsek Model</h2>
-	    
-	    <div style="margin-left: 8%;
-			margin-right: 8%;
-			">
-	      <p style="align:centre;
-			font-size: 28px;"><b>Mermin-Wagner's Theorem [5]:</b> A system in equilibrium  cannot undergo continuous symmetry breaking in less than three dimensions.</p>	    
-	      
-
-	      <div class="fragment" style="position:absolute;
-					   width: 60%;
-					   left:0%;
-					   top:17%;
-					   font-size: 22px;
-					   white-space: pre-line;">
-		<p align="center" style="position:absolute;
-					 font-size: 28px;
-					 top:-2%;
-					 left:43%;
-					 text-align:center;"><b>Proof Idea:</b></p>
-		Consider a phase with spontaneous magnetisation:  
-		\[\mathbf{s}=\left(\sqrt{1-\sum_\alpha\sigma_\alpha^2},\sigma_1,\cdots,\sigma_{N-1}\right), \quad |\sigma|\ll 1, \quad 1 \leq \alpha \leq N-1\]
-		The reduced hamiltonian is: \[H = - \frac{1}{2} \sum_{r,r'}J(r-r')\mathbf{s}({r})\cdot \mathbf{s}({r}')\quad \xrightarrow[\text{long-wavelength fluctuation}]{\text{continuum limit}}\quad H = \text{const} + \frac{K}{2}\int \sum_\alpha (\nabla \sigma_\alpha)^2 d^dr\]
-		The first order correction to the spontaneous magnetisation is given by:
-		\[\langle \sigma_\alpha(r_1)\sigma_\alpha(r_2)\rangle=\frac{1}{K}\int_{BZ}\frac{e^{ik(r_1-r_2)}}{k^2}\frac{d^dk}{(2\pi)^d} \quad  \longrightarrow \quad \langle s_1 (r)\rangle =1-\frac{1}{2}\sum_\alpha \langle \sigma_\alpha(r)^2\rangle \sim 1- \int_{BZ}\frac{d^dk}{k^2}\]
-		For long wavelengths, the integral two or less dimensions! The assumption of a an order phase in non-zero temperature is incorrect, hence, <b>the system cannot undergo a continuous symmetry breaking in less than three dimensions</b>.
-	      </div>
-	      <div class="fragment" style="position: absolute;
-					   width: 20%;
-					   right: 10%;
-					   font-size: 23px;
-					   top:17%;
-					   white-space: pre-line;">
-		
-		<p align="center" style="font-size: 28px;
-					 top:-2%;
-					 "><b>Energetic argument [6]:</b></p>
-		
-		If we form a domain of size l by forcing the spins near the middle to point in the opposite direction of those further away:
-		
-		<img style="text-align: center;
-			    margin:0;"
-		     width="350px" data-src="mermin-wagner.png"/>
-		\[\begin{align}
-		E&\sim L\frac{\pi^2}{L^2} && \implies E\sim L^{d-2}
-		\end{align}
-		\]
-	      </div>
-	    </div>
-	    <div class="fragment" style="margin-left: 8%;
-			margin-right: 8%;
-			position:absolute;
-			font-size: 25px;
-			bottom: 6%;
-			border:1px solid #303668;
-			">
-	      <p align="centre" style="color:#303668;
-				       font-size: 28px;
-				       margin-left: 8%;
-				       margin-right: 8%;
-				       ">In Vicsek's model the motion of the particles  gives rise to effective long-range spatial interactions among the particles in the system and hence, <b>long-range order</b>, producing the <b>phase transition</b>.</p>	 
-	    </div>
-
-	    <!-- References -->
-	    <p  style="position:absolute;
-		       width: 100%;
-		       bottom: -5%;
-		       left:5%;
-		       text-align: left;
-		       font-size: 20px;
-		       white-space: pre-line;
-		       ">
-	      [5] Mermin, N.D. and Wagner, H. Phys. Rev. Lett. 17.1133
-	      [6] Cardy. J, <i>Scaling and Renormalization in Statistical Physics</i>
-	    </p>
-	    <p  style="position:absolute;
-		       width: 100%;
-		       bottom: -5%;
-		       right:5%;
-		       text-align: right;
-		       font-size: 20px;
-		       white-space: pre-line;
-		       ">4
-	    </p>
-	  </section>
-
-	  
-	  <!-- Slide 2.4 -->
-	  <section style="height: 100%; margin-top: 3%;" >
-	    <h2 style="top 0">Flocking and the Vicsek Model</h2>
-	    
-	    <div style="margin-left: 10%; margin-right: 10%; font-size:30px">
-	      
-	      <p align="left"  style="font-size: 30px;">After Vicsek's findings, other authors came forward suggesting that the phase transition in the Vicsek model is actually first order (discontinuous).</p>
-	      <p class="fragment" align="left"  style="font-size: 30px;">The nature of the transition depends on the way the <b>noise is introduced</b> into the system:</p>
-
-	      <!-- Horizontal div -->
-	      <div style="margin-top: 3%;
-			  font-size:25px;
-			  display: flex;
-			  ">
-
-		<!-- Left most picture -->
-		<div class="fragment"  style="">
-		  <img class="zoom"  style="margin:0;
-			      width:700px;" data-src="vicsek-plots.png"/>
-		  <p style="margin:1%;
-			    font-size:20px;
-			    text-align:left;">[7]</p>
-		</div>
-
-		<!-- Center text -->
-		<div class="fragment" style="
-					     margin-left:1%;">
-
-		  Intrinsic/ scalar noise (○):
-		  \[\theta_i(t+\Delta t) = \langle\theta_i(t)\rangle_r + \eta\xi_i\]
-		  Extrinsic/ vectorial noise (□):
-		  \[\theta_i(t+\Delta t) = \langle\theta_i(t) + \eta e^{i\xi_i}\rangle_r\]
-		  where \[\eta \in [0,1], \quad \xi_i \in [0,2\pi]\]
-		  
-		</div>
-
-		<div class="fragment" style="
-					     margin-left:1%;">
-		  In the extrinsic noise system:
-		  <ul>
-		    <li>Discontinuous drop in the order parameter.</li>
-		    <li>There are evidences of a 1st order transition characterised by phase coexistance - Binder cumulant:</li>
-		    <p>\[G = 1-\frac{\langle\phi^4\rangle}{3\langle\phi^2\rangle^2}\]<p>
-		  </ul>  
-		</div>
-
-		<!-- Right most picture -->
-		<div class="fragment" style="">
-		  <img class="zoom"  style="margin:0;
-			      width:700px;" data-src="grenoire.png"/>
-		  <p style="margin:1%;
-			    font-size:20px;
-			    text-align:left;">[7]</p>
-		</div>
-		
-	      </div>
-	    </div>
-	       
-	    <!-- References -->
-	    <p  style="position:absolute;
-		       width: 100%;
-		       bottom: -5%;
-		       left:5%;
-		       text-align: left;
-		       font-size: 20px;
-		       white-space: pre-line;
-		       ">
-	      [7] Gregoire G., Chat H. Phys. Rev. Lett. 92.025702	
-	    </p>
-	    <p  style="position:absolute;
-		       width: 100%;
-		       bottom: -5%;
-		       right:5%;
-		       text-align: right;
-		       font-size: 20px;
-		       white-space: pre-line;
-		       ">5
-	    </p>
-
-	  </section>
-
-	  <!-- Slide 2.5 -->
-<!-- 	  <section style="height: 100%; margin-top: 3%;" > -->
-<!-- 	    <h2 style="top 0">Flocking and the Vicsek Model</h2> -->
-	    
-<!-- 	    <div style="margin-left: 10%; margin-right: 10%; font-size:30px"> -->
-<!-- <p  align="left" style="font-size: 30px;">To ascertain the nature of the phase transition in the case of intrinsic noise, the usual techniques were used: finite-size scaling analyis, mean-field theory (network models), renormalization and comparing to other models.  -->
-
-<!-- <\!-- A large difficulty in studying systems like this is that there exist several parameters and changing could lead to different behaviours. There could be different phase transitions depending on the parameters chosen. -\-></p> -->
-
-
-<!-- 	    <div style="margin-top: 3%; -->
-<!-- 			font-size:25px; -->
-<!-- 			display: flex; -->
-<!-- 			"> -->
-
-<!-- 	      <div class="fragment" style=""> -->
-<!-- 		<img style="margin:0; -->
-<!-- 			    width:1300px;" data-src="vicsek-mega-plots-2.png"/> -->
-<!-- 		<p style="margin:1%; -->
-<!-- 			  font-size:20px; -->
-<!-- 			  text-align:left;">[11]</p> -->
-<!-- 	      </div> -->
-
-<!-- 	      <div class="fragment" style="font-size:20px; -->
-<!-- 					   margin-left:1%;"> -->
-<!-- 		  Keeping the density fixed and increasing the system size, they analised the behaviour for different system sizes: -->
-<!-- 		  \[\eta(\rho,L)-\eta(\rho,\infty)\sim N^{-\zeta},\quad \zeta\approx \frac{1}{4}\] -->
-<!-- 		  They were able to define a universal scaling function: -->
-		  
-<!-- 		  \[\phi(\eta)=\begin{cases} -->
-<!-- 		  \left(\frac{\eta_c(\rho,L)-\eta}{\eta_c(\rho,L)}\right)^\beta&&\text{for }\eta<\eta_c(\rho,L) \\ -->
-<!-- 														0&&\text{for }\eta>\eta_c(\rho,L)  -->
-<!-- 		    \end{cases}\quad \xrightarrow[\text{function}]{\text{universal scaling}} \quad \phi(\eta,\rho)=\tilde{\phi}\left(\frac{\eta}{\eta_c(\rho)}\right)\] -->
-<!-- 		    And determine a critical exponent for the critical noise with density. -->
-<!-- 		  \[\eta_c(\rho)\sim \rho^\kappa,\quad \kappa \approx \frac{1}{2}\] -->
-
-		  
-<!-- 		<p class="fragment" style="font-size: 25px">This scaling analysis has since been improved by other authors [12] but the main conclusion remains: this system exhibits a <b>second order phase transition with non-trivial critical exponents</b>.</p> -->
-<!-- 		</div> -->
-		
-<!-- 	      </div> -->
-<!-- 	    </div> -->
-
-<!-- 	    <\!-- References -\-> -->
-<!-- 	    <p  style="position:absolute; -->
-<!-- 		       width: 100%; -->
-<!-- 		       bottom: -5%; -->
-<!-- 		       left:5%; -->
-<!-- 		       text-align: left; -->
-<!-- 		       font-size: 20px; -->
-<!-- 		       white-space: pre-line; -->
-<!-- 		       "> -->
-<!-- 	      [11] András Czirók et al 1997 J. Phys. A: Math. Gen. 30 1375. -->
-<!-- 	      [12] G. Baglieto and G.V. Albano. Phys. Rev. E 78, 021125 (2008). -->
-<!-- 	      . -->
-<!-- 	    </p>	     -->
-<!-- 	  </section> -->
-
-	  <section style="height: 100%; margin-top: 3%;" >
-	    <h2 style="top 0">Flocking and the Vicsek Model</h2>
-	    
-	    <div style="margin-left: 10%; margin-right: 10%; font-size:30px">
-	      <p  align="left" style="font-size: 30px;">To ascertain the nature of the phase transition in the case of intrinsic noise, techniques used for equilibrium systems like <b>finite-size scaling</b> and <b>short-time dynamic scaling</b> (STD scaling) can be used [8]: 
-
-		<div style="margin-top:3%;
-			    font-size:25px;
-			    display: flex;
-			    ">
-		  <!-- Column 1 -->
-		  <div style="position:absolute;
-			      width:700px;
-			      left:10%;">
-		    <h4>Finite-size scaling</h4>
-		    System size is varied and the order parameter and susceptibility are fit to the scaling relations:
-		    \[ \phi(\eta,L)=L^{-\beta/\nu}\tilde{\phi}\left((\eta-\eta_c)L^{1/\nu}\right) \rightarrow \phi\sim(\eta_c-\eta)^\beta\]
-		    \[\chi(\eta,L)=L^{\gamma/\nu}\tilde{\chi}\left((\eta-\eta_c)L^{1/\nu}\right)  \rightarrow \chi\sim(\eta-\eta_c)^{-\gamma}\]
-		    where,
-		    \[\eta_c(\rho)\sim \rho^\kappa,\quad \kappa\approx 1/2\]
-		    <img class="zoom"  src="colapse.png" width="800px"></img>
-		  </div>
-
-		  <div class="fragment" style="position:absolute;
-			      width:800px;
-			      right:10%;">
-		    <h4>STD scaling</h4>
-		    Systems begins in ordered/disordered phase and is "annealed" to the critical noise. The order parameter and susceptibility are fit to the scaling relations:
-		    \[ \phi(t, \eta,L)=b^{-\beta/\nu}\bar{\phi}\left(b^{-z}t,b^\nu(\eta-\eta_c)L^{1/\nu},b^{-1}L\right) \]
-		    \[\chi(t,\eta,L)\sim b^{\gamma/\nu}\bar{\chi}\left(b^{-z}t,b^\nu(\eta-\eta_c)L^{1/\nu},b^{-1}L\right)\]
-		    where,
-		    \[\xi\sim t^{1/z} \ll L, \quad b\equiv t^{1/z} \quad \implies \quad \phi\sim t^{-\beta/{\nu z}} \quad \chi\sim t^{\gamma/{\nu z}}\]
-
-		    <div class="fragment" style="border:1px solid black;font-size:25px;">
-		      Second order phase transition with exponents:
-		      \[
-		      \begin{align}
-		      0.42(4) \leq &\beta \leq 0.45(3) \\ 1.3(3) \leq &\nu \leq 1.6(3) \\ 1.87(4) \leq &\gamma \leq 2.3(4)
-		      \end{align}
-		      \]
-		      defining its own <b>universality class</b>.
-		    </div>
-		  </div>
-		</div>
-	    </div>
-
-
-	    <!-- References -->
-	    <p  style="position:absolute;
-		       width: 100%;
-		       bottom: -5%;
-		       left:5%;
-		       text-align: left;
-		       font-size: 20px;
-		       white-space: pre-line;
-		       ">
-	      [8] G. Baglieto and G.V. Albano. Phys. Rev. E 78, 021125 (2008).
-	    </p>
-	    <p  style="position:absolute;
-		       width: 100%;
-		       bottom: -5%;
-		       right:5%;
-		       text-align: right;
-		       font-size: 20px;
-		       white-space: pre-line;
-		       ">6
-	    </p>
-
-	  </section>
-	  
-
-	  <!-- Slide 2.6 -->
-	  <section style="height: 100%; margin-top: 3%;" >
-	    <h2 style="top 0">Active Brownian Particles (ABPs)</h2>
-
-	    <p align="left"  style="
-			margin-left: 10%; margin-right: 10%; font-size: 30px;">Brownian motion is the random motion of particles suspended in a fluid caused by the collisions of the particles with the atoms of the fluid. They key characteristics are:</p>
-	    <div style="display: flex;
-			margin-left: 10%; margin-right: 10%; font-size: 30px;">
-
-		<ul align="left" style="position:absolute;
-					margin-left: 15%; margin-right: 10%; 
-					left:0;
-					font-size:25;">
-		  <li>System has no memory due to the high collision rate</li>
-		  <li>There is no preferential direction of motion</li>
-		  <li>Linear and angular momentum are preserved</li>
-		</ul>
-	      <div style="position:absolute; 
-			  right:13%;
-			  font-size:26px;">
-	      \[\partial_t\rho(r,t)=D\nabla^2\rho(r,t) \implies \text{MSD}\sim Dt\]</div>
-	    </div>
-	    
-	    <div class="fragment"  style="position:absolute;
-					  margin-left: 10%;
-					  margin-right: 10%;
-					  top:35%;
-					  left:5%;
-					  font-size:30px;">
-	      
-	      <p>It can be simply modelled by the Langevin Equation:</p>
-	      \[\gamma\dot{\mathbf{r}} = -\nabla U + \mathbf{\Gamma}(t)\]
-	      <video width="300px"  loop="true" src="2-pp.mp4" controls="true">
-	      </video>
-	      <img src="time-arrow.png" height="250px"; style="margin:0;" ></img>
-	    </div>
-	    
-	    <div style="position:absolute;
-			margin-left: 10%;
-			margin-right: 10%;
-			left:5%;
-			top:35%;
-			font-size:25px;">
-	    </div>
-	    
-	    <div class="fragment" style="position:absolute;
-					 margin-left: 10%;
-					 margin-right: 10%;
-					 top:35%;
-					 right:5%;
-					 font-size:30px;">
-	      
-	      <p>To make it active we add a force:</p>
-	      \[\gamma\dot{\mathbf{r}} = -\nabla U + \mathbf{F_a}+\mathbf{\Gamma}(t)\]
-	      <video width="300px"  loop="true" src="2-ap.mp4" controls="true">
-	      </video>
-	      <img src="time-arrow.png" height="250px"; style="margin:0;" ></img>
-	    </div>
-
-	    <p  style="position:absolute;
-		       width: 100%;
-		       bottom: -5%;
-		       right:5%;
-		       text-align: right;
-		       font-size: 20px;
-		       white-space: pre-line;
-		       ">7
-	    </p>
-
-	  </section>
-
-	  
-	  <!-- Slide 2.7 -->
-	  <section style="height: 100%; margin-top: 3%;" >
-	    <h2 style="top 0">Active Brownian Particles (ABPs)</h2>
-	    <div style="margin-top: 3%;font-size:30px;">
-
-	      In the case of multiple particles we must include a repulsive/attractive force between the different particles.  
-	      <div style="margin-left: 10%; margin-right: 10%;">
-		<div class="fragment" style="position:absolute;
-					     margin-left: 10%;
-					     margin-right: 10%;
-					     left: 0;
-					     top:18%;
-					     font-size:25px;
-					     text-align:left;">
-		  
-		  \[
-		  \begin{align}
-		  \gamma \mathbf{\dot{r}}_i& = F_\text{act}\mathbf{n}_i - \nabla_i \sum_{i\neq j}U(r_{ij}) + \sqrt{2\gamma k_B T}\xi_i \\
-		  \mathbf{n}_i &= (\cos\theta_i(t),\sin\theta_i(t)) \quad \text{with} \quad \dot{\theta}=\sqrt{2D_{\theta_i}}\eta_i \quad \text{and} \quad D_\theta = 3k_BT/\gamma \sigma^2_d
-		  \end{align}
-		  \]		  
-		</div>
-
-		<div class="fragment" style="position:absolute;
-					     margin-left: 10%;
-					     margin-right: 10%;
-					     right:0%;
-					     top:21%;
-					     font-size:20px;">
-		  \[
-		  \begin{align}
-		  &\langle\xi_i(t)\rangle=0, \quad \langle\xi_i(t)\xi_j(t^\prime)\rangle=\delta_{ij}\delta(t-t^\prime)\\
-	          &\langle\eta_i(t)\rangle=0, \quad \langle\eta_i(t)\eta_j(t^\prime)\rangle=\delta_{ij}\delta(t-t^\prime)
-		  \end{align}
-		  \]
-		  
-		</div>	    
-
-		
-
-
-
-		<div class="fragment" style="position:absolute;
-					     margin-left: 10%;
-					     margin-right: 10%;
-					     left: 0;
-					     top:39%;
-					     width:40%;
-					     font-size:25px;
-					     text-align:left;">
-
-		  For the particle interaction we usually use a truncated and shifted Lennard-Jones potential:
-
-		  
-		  <div style="position:absolute;
-			      left:0;
-			      top:70px;">
-		    <img src="desmos-graph.png" width="350px" height="350px"></img>
-		  </div>
-		  
-		  <div style="position:absolute;
-			      font-size:20px;
-			      left:270px;
-			      width:500px;
-			      top:80px;
-			      ">
-		    
-		    \[
-		    \begin{align}
-		    &U(r_{ij}) =
-		    \begin{cases}
-		    U_{LJ}(r_{ij})-U_{LJ}(r_0) && \text{for } r\leq r_0 \\
-		    0 && \text{for } r > r_0 
-		    \end{cases} \\
-		    &U_{LJ}(r) = 4\epsilon\left[\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right]
-		    \end{align}
-		    \]
-		    
-		    
-		  </div>
-
-		</div>
-
-		<div  class="fragment" style="position:absolute;
-					      margin-left: 10%;
-					      margin-right: 10%;
-					      right: 0;
-					      top:42%;
-					      width:50%;
-					      font-size:20px;
-					      text-align:right;">
-
-		  <video width="300px" loop="true" src="pbp_compressed.mp4" controls="true">
-		  </video>
-		  <video width="300px" loop="true" src="abp_compressed.mp4" controls="true">
-		  </video>
-		</div>
-		
-
-		<div  class="fragment" style="position:absolute;
-					      margin-left: 10%;
-					      margin-right: 10%;
-					      left: 40%;
-					      top:72%;
-					      width:50%;
-					      font-size:25px;">
-
-		  How do these structures emerge in the parameter space of:
-		  \[
-		  \begin{align}
-		  \phi_P = N\frac{\pi \sigma_D^2}{4S} &&
-		  \text{Pe} = \frac{Lv_\text{act}}{D} = \frac{\sigma_D F\text{act}}{k_B T}
-		  \end{align}\]
-		</div>
-
-		
-	      </div>
-
-	      <p  style="position:absolute;
-			 width: 100%;
-			 bottom: -5%;
-			 right:5%;
-			 text-align: right;
-			 font-size: 20px;
-			 white-space: pre-line;
-			 ">8
-	      </p>
-
-	  </section>
-
-	  <!-- Slide 2.8 -->
-	  <section style="height: 100%; margin-top: 3%;" >
-	    <h2 style="top 0">Active Brownian Particles (ABPs)</h2>
-	    <div style="margin-top: 3%;
-			font-size:25px;
-			display: flex;
-			">
-
-	      <div style="width:800px;">
-		<img class="zoom"  style="margin:0;" data-src="athermal-phase-separation.png"/>
-		<p style="margin:1%;
-			  font-size:23px;
-			  text-align:left;">[9]</p>
-	      </div>
-	      
-
-	      <div style="width:900px;
-			  margin-top:3%;
-			  ">
-		<p style="text-align:left;
-			  ">General characteristics of 2D-ABP systems:</p>
-		
-		<ul>
-		  <li>Above a critical packing fraction and activity, large clusters form - <b>Motility Induced Phase-Separation (MIPS)</b>.</li>
-		  <li>The <b>mechanism behind MIPS</b>:
-		    <ul>
-		      <li>particle symmetry</li>
-		      <li>diffusion supression for higher densities</li>
-		      <li>subdiffusive initial regime (collision time < rotational diffusion time)</li>
-		    </ul>
-		  <li>Activity plays a role of attraction force between particles.</li>
-		  <li>Information in the structure factor:</li>
-		</ul>
-		    \[S(\mathbf{k})=\frac{1}{N}\langle\sum_{ij}e^{i\mathbf{k}\cdot\mathbf{r}_{ij}}\rangle\]
-		<b>Activity induces order!</b>
-		
-		<!-- <ul> -->
-		<!--   <li>Athermal phase separation not geometrical effects but solely from activity (in contrast with rods and other systems that exhibit orientations.)</li> -->
-		<!--   <li>It can only be approximated by an equivalent thermal system for very dilute regimes.</li> -->
-		<!--   <li>Giant number fluctuations: in equilibrium systems DN scales with the square root of N whilst in these systems it scales like N^a, a trend that increases with packing fraction</li> -->
-		<!--   <li>The data can be fitted to the diffusion seen in PRW. For non interactive particles the diffusive behaviour is of the type \[MSD=4D_0(t+\frac{1}{\nu_r}(e^{-\nu_r t}-1))\] which is ballistic for small times (goes with t^2) and diffusive (linear) for larger times. Introducing the interaction between particles supresses the diffusive behaviour and is responsible for the phase separation and cluster formation /[D_e=D_0(1-\lambda \phi)^2/]</li> -->
-		<!--   <li>Subdiffusive behaviour at short time scales can be responsible for the cluster formation </li> -->
-		<!--   <li>System exhibits a phase transition like the ones we find in equilibrium systems, but now Pe plays the role of the attraction force between particles. Binodal envelope and coexistance curve is shown.</li> -->
-		<!--   <li>For low Peclet number there is an isotropic structure facture characteristic of fluids. As activity is increased six-fold symmetry begins to unfold.</li> -->
-		<!--   <li>What are the mechanisms for the phase separtion?</li> -->
-		<!--   <li>Clustering occurs when the collision time is shorter than the rotational diffusion time.</li> -->
-		<!-- </ul> -->
-
-		<!--  -->
-
-	      </div>
-	      
-	      <div style="width:800px;">
-		<img class="zoom"  style="margin:0;" data-src="structure-and-dynamics.png"/>
-		<p style="margin:1%;
-			  font-size:23px;
-			  text-align:left;">[10]</p>
-	      </div>
-	    </div>
-
-	    <!-- References -->
-	    <p  style="position:absolute;
-		       width: 100%;
-		       bottom: -5%;
-		       left:5%;
-		       text-align: left;
-		       font-size: 20px;
-		       white-space: pre-line;
-		       ">
-	      [9] Fily Y. and Cristina Marchetti M.,  Phys. Rev. Lett. 108, 235702 (2012)
-	      [10] S. Redner G. <it>et al.</it>, Phys. Rev. Lett. 110, 055701 (2013).
-	    </p>
-	    	    <p  style="position:absolute;
-		       width: 100%;
-		       bottom: -5%;
-		       right:5%;
-		       text-align: right;
-		       font-size: 20px;
-		       white-space: pre-line;
-		       ">9
-	    </p>
-
-	  </section>
-
-
- <!-- Slide 2.8 -->
-	  <section style="height: 100%; margin-top: 3%;" >
-	    <h2 style="top 0">Active Brownian Particles (ABPs)</h2>
-	    <div style="margin-top: 3%;font-size:27px;
-			display: flex;
-			">
-
-	      <div style="width:800px;">
-		<img 
-		  class="zoom"  width="800px" style="margin:0;" data-src="full-phase-diagram.png"/>
-		<!-- <p style="margin:1%; -->
-		<!-- 	  font-size:23px; -->
-		<!-- 	  text-align:left;">[16]</p> -->
-	      </div>
-	      
-
-	      <div style="width:900px;">
-		<p style="text-align:left;
-			  ">In 2018, Digregorio <it>et al.</it> completely quantified the phase-diagram of 2D ABPs.</p>
-		<ul>
-		  <li>Orientational order parameter and its correlation,
-		  		  \[
-		  \begin{align}
-		  \psi_{6i}=\frac{1}{N_i}\sum_{j=1}^{N_i}e^{i6\theta_{ij}} &&
-		    g_6(r)=\frac{\langle \psi_{6i} \psi_{6j}^*\rangle_{r_{ij}=r}}{\langle |\psi_{6i}|^2\rangle}
-		  \end{align}
-		  \]
-		  </li>
-		  of a new phase of matter: <b>hexatic phase</b> characterised by <b>quasi-long-range orientational order and short-range positional one</b>.
-		  	  		  \[
-		  \begin{align}
-		  g_{6_\text{liquid}}(r)\sim e^{-r/21} && &g_{6_\text{hexatic}}(r)\sim r^{1/4}\sim g_{6_\text{BKT}}(r)\\
-		  C_{{q_0}_\text{hexatic}}(r)\sim e^{-r/11} && &C_{{q_0}_\text{solid}}(r)\sim r^{1/3}
-		  \end{align}
-		  \]
-		  <li>Low activity disrupts order <b>inducing melting</b>.</li>
-		  <li>High activity induces MIPS - rearrangement hexatic regions - prevailing over hexatic and solid phases.</li>
-		  <!-- <li>Here the authors were beyond the previous studies and were able to explore the whole phase space and find a critical point.</li> -->
-		  <!-- <li>They found that there were actually 3 different phases at play characterised by different types of translational and orientational order.</li> -->
-		  <!-- <li>At lower activity regimes the 2D liquid-hexatic-solid transition is observed and small activity perturbations simply shift that transition to higher densitie until liquid-hexatic coexistance eventually disappears.</li> -->
-		  <!-- <li>At high densities there is coexistance of active hexatic and solid regions (MIPS) that rearrange via breaking and recombine.</li> -->
-		  <!-- \[ -->
-		  <!-- \begin{align} -->
-		  <!-- \psi_{6i}=\frac{1}{N_i}\sum_{j=1}^{N_i}e^{i6\theta_{ij}} && -->
-		  <!-- g_6(r)=\frac{\langle \psi_{6i} \psi_{6j}^*\rangle_{r_{ij}=r}}{\langle |\psi_{6i}|^2\rangle} -->
-		  <!-- \end{align} -->
-		  <!-- \] -->
-		  <!-- <li>The g6 behaviour changes from exponential active liquid (in black) to active algebraic hexatic (blue). the algebraic power is close to the BKT 1/4 but varies with phi and Pe. Activity increases quasi-long range order. Its hard to say if it acquires long range order.</li> -->
-		  <!-- <li>They used the decay in the maximum of the first diffraction peak of the structure factor to quantify the positional order. Exponential is hexatic and algebraic is solid. They found that activity perturbs the order and induces melting. They also acquired the exponent of 1/3 that matches that of the standard KTHNY theory. </li> -->
-		</ul>
-	      </div>
-
-
-	      
-	      <div class="modal" style="width:900px;">
-		<img 
-		  class="zoom"  width="900px" style="margin:0;" data-src="states-matter.png"/>
-		<!-- <p style="margin:1%; -->
-		<!-- 	  font-size:23px; -->
-		<!-- 	  text-align:left;">[16]</p> -->
-	      </div>
-	      
-	    </div>
-
-	    <!-- References -->
-	    <p  style="position:absolute;
-		       width: 100%;
-		       bottom: -5%;
-		       left:5%;
-		       text-align: left;
-		       font-size: 20px;
-		       white-space: pre-line;
-		       ">
-	      [11] Digregorio P. <it>et al.</it>,  Phys. Rev. Lett. 121, 098003 (2018)
-	    </p>
-	    <p  style="position:absolute;
-		       width: 100%;
-		       bottom: -5%;
-		       right:5%;
-		       text-align: right;
-		       font-size: 20px;
-		       white-space: pre-line;
-		       ">10
-	    </p>
-
-	  </section>
-	  
-	  
-	</section>
-
-	<section style="height: 100%; margin-top: 3%;" >
-	  <h2 style="top 0">Conclusions</h2>
-	  
-	  <div style="margin-left: 10%; margin-right: 10%; float: left; margin-top: 5%; font-size:35px;">
-
-	    <ul>
-	      <li>Active systems are prevalent across different scales and disciplines.</li>
-	      <li>The techniques used in equilibrium systems can be applied and our theory extended to active systems.</li>
-	      <li>The analysis of these systems is more complex and new behaviours emerge.</li>
-	      <li>It is an active and vibrant area of research with a lot left to be explored.</li>
-	    </ul>
 	  </div>
+
+	  <div class="fragment fade-in-then-out">
+	    <img style="position: absolute;
+			top: 22%;
+			right: 15%;
+			width: 23%;
+			margin: 0;"  data-src="media/vicsek_diagram_0.png"/>
+	  </div>
+
+	  <div class="fragment fade-in-then-out">
+	    <img style="position: absolute;
+			top: 22%;
+			right: 15%;
+			width: 23%;
+			margin: 0;"  data-src="media/vicsek_diagram.png"/>
+	  </div>
+	  
+	  <div class="fragment fade-in-then-out">
+	    <img style="position: absolute;
+			top: 22%;
+			right: 15%;
+			width: 23%;
+			margin: 0;"  data-src="media/vicsek_diagram_2.png"/>
+	  </div>
+	  
+	  
+	  <div class="fragment">
+	    <img style="position: absolute;
+			top: 22%;
+			right: 15%;
+			width: 23%;
+			margin: 0;"  data-src="media/vicsek_diagram_3.png"/>
+	  </div>
+	  
+	  <div class="fragment" style="
+				       position: absolute;
+				       top: 45%;
+				       width: 40%;
+				       left: 13%;
+				       font-size: 32px;
+				       color:black;">
+	    \[
+	    \begin{align}
+	    \text{Order parameter:} \quad \phi = \frac{1}{Nv}\left|\sum_{i=1}^N\mathbf{v_i}\right| \\
+	    \text{(disordered)} \quad 0 \leq \phi \leq 1 \quad \text{(ordered)}
+	    \end{align}
+	    \]
+	    
+	  </div>
+
+	  <!-- References -->
+	  <p  style="position:absolute;
+		     width: 100%;
+		     bottom: -5%;
+		     left:5%;
+		     text-align: left;
+		     font-size: 25px;
+		     white-space: pre-line;
+		     color:white;
+		     ">
+	    [2] Jan van IJken / www.janvanijken.com</p>
+
+	  <!-- Manual Page Number -->
 	  <p  style="position:absolute;
 		     width: 100%;
 		     bottom: -5%;
 		     right:5%;
 		     text-align: right;
-		     font-size: 20px;
+		     font-size: 25px;
+		     white-space: pre-line;
+		     color:white;
+		     ">2
+	  </p>
+	  
+	</section>
+	
+
+	<!-- Slide 3 -->
+	<section style="height: 100%; margin-top: 3%;" >
+	  <h2 style="top 0">Flocking and the Vicsek Model</h2>
+	  <div style="margin-top: 3%;">
+
+	    <div style="display: inline-flex">
+	      <div style="width: 425px; margin: 0;"> 
+		<img class="zoomR"  style="margin: 0;" data-src="media/original-vicsek-plots.png"/>
+		<p style="margin:1%;
+			  font-size:20px;
+			  text-align:left;">[3]</p>
+	      </div>
+	      <div style="margin: 0; font-size: 25px; width: 1200px">
+		<div id="explorable_container"></div>
+		<p style="margin:1%;
+			  font-size:20px;
+			  text-align:right;">[4]</p>
+	      </div>
+	    </div>
+
+
+	    <div class="fragment" style="
+					 position:absolute;
+					 width: 100%;
+					 bottom: 18%;
+					 text-align: center;
+					 font-size: 25px;">
+	      \[\phi \approx (\eta_c(\rho)-\eta)^\beta \quad \text{ with } \quad \beta = 0.45\pm 0.07\]
+	    </div>
+	    <p class="fragment" style="
+				       position:absolute;
+				       width: 100%;
+				       bottom: 10%;
+				       text-align: center;
+				       font-size: 35px;">
+	      Second-order phase transition?
+	    </p>
+	  </div>
+	  
+	  
+	  <!-- References -->
+	  <p  style="position:absolute;
+		     width: 100%;
+		     bottom: -5%;
+		     left:5%;
+		     text-align: left;
+		     font-size: 25px;
+		     white-space: pre-line;
+		     ">
+	    [3] Vicsek <i>et al.</i> Phys. Rev. Lett. 75.1226 A (1995)
+	    [4] Dirk Brockmann, Complexity Explorables 
+	  </p>
+	  
+	  <!-- Manual Page Number -->
+	  <p  style="position:absolute;
+		     width: 100%;
+		     bottom: -5%;
+		     right:5%;
+		     text-align: right;
+		     font-size: 25px;
+		     white-space: pre-line;
+		     ">3
+	  </p>
+	</section>
+	
+	
+	<!-- Slide 4 -->
+	<section style="height: 100%; margin-top: 3%;" >
+	  <h2 style="top 0">Flocking and the Vicsek Model</h2>
+	  
+	  <div style="margin-left: 8%;
+		      margin-right: 8%;
+		      ">
+	    <p style="align:centre;
+		      font-size: 28px;"><b>Mermin-Wagner's Theorem [5]:</b> A system in equilibrium  cannot undergo continuous symmetry breaking in less than three dimensions.</p>	    
+	    
+
+	    <div class="fragment" style="position:absolute;
+					 width: 60%;
+					 left:0%;
+					 top:17%;
+					 font-size: 22px;
+					 white-space: pre-line;">
+	      <p align="center" style="position:absolute;
+				       font-size: 28px;
+				       top:-2%;
+				       left:43%;
+				       text-align:center;"><b>Proof Idea [6]:</b></p>
+	      Consider a phase with spontaneous magnetisation:  
+	      \[\mathbf{s}=\left(\sqrt{1-\sum_\alpha\sigma_\alpha^2},\sigma_1,\cdots,\sigma_{N-1}\right), \quad |\sigma|\ll 1, \quad 1 \leq \alpha \leq N-1\]
+	      The reduced hamiltonian is: \[H = - \frac{1}{2} \sum_{r,r'}J(r-r')\mathbf{s}({r})\cdot \mathbf{s}({r}')\quad \xrightarrow[\text{long-wavelength fluctuation}]{\text{continuum limit}}\quad H = \text{const} + \frac{K}{2}\int \sum_\alpha (\nabla \sigma_\alpha)^2 d^dr\]
+	      The first order correction to the spontaneous magnetisation is given by:
+	      \[\langle \sigma_\alpha(r_1)\sigma_\alpha(r_2)\rangle=\frac{1}{K}\int_{BZ}\frac{e^{ik(r_1-r_2)}}{k^2}\frac{d^dk}{(2\pi)^d} \quad  \longrightarrow \quad \langle s_1 (r)\rangle =1-\frac{1}{2}\sum_\alpha \langle \sigma_\alpha(r)^2\rangle \sim 1- \int_{BZ}\frac{d^dk}{k^2}\]
+	      For long wavelengths, the integral two or less dimensions! The assumption of a an order phase in non-zero temperature is incorrect, hence, <b>the system cannot undergo a continuous symmetry breaking in less than three dimensions</b>.
+	    </div>
+	    <div class="fragment" style="position: absolute;
+					 width: 20%;
+					 right: 10%;
+					 font-size: 23px;
+					 top:17%;
+					 white-space: pre-line;">
+	      
+	      <p align="center" style="font-size: 28px;
+				       top:-2%;
+				       "><b>Energetic argument [6]:</b></p>
+	      
+	      If we form a domain of size l by forcing the spins near the middle to point in the opposite direction of those further away:
+	      
+	      <img style="text-align: center;
+			  margin:0;"
+		   width="350px" data-src="media/mermin-wagner.png"/>
+	      \[\begin{align}
+	      E&\sim L\frac{\pi^2}{L^2} && \implies E\sim L^{d-2}
+	      \end{align}
+	      \]
+	    </div>
+	  </div>
+	  <div class="fragment" style="margin-left: 8%;
+				       margin-right: 8%;
+				       position:absolute;
+				       font-size: 25px;
+				       bottom: 6%;
+				       border:1px solid #303668;
+				       ">
+	    <p align="centre" style="color:#303668;
+				     font-size: 28px;
+				     margin-left: 8%;
+				     margin-right: 8%;
+				     ">In Vicsek's model the motion of the particles  gives rise to effective long-range spatial interactions among the particles in the system and hence, <b>long-range order</b>, producing the <b>phase transition</b>.</p>	 
+	  </div>
+
+	  <!-- References -->
+	  <p  style="position:absolute;
+		     width: 100%;
+		     bottom: -5%;
+		     left:5%;
+		     text-align: left;
+		     font-size: 25px;
+		     white-space: pre-line;
+		     ">
+	    [5] Mermin, N.D. and Wagner, H. Phys. Rev. Lett. 17.1133
+	    [6] Cardy. J, <i>Scaling and Renormalization in Statistical Physics</i>
+	  </p>
+	  
+	  <!-- Manual Page Number -->
+	  <p  style="position:absolute;
+		     width: 100%;
+		     bottom: -5%;
+		     right:5%;
+		     text-align: right;
+		     font-size: 25px;
+		     white-space: pre-line;
+		     ">4
+	  </p>
+	</section>
+
+	
+	<!-- Slide 5 -->
+	<section style="height: 100%; margin-top: 3%;" >
+	  <h2 style="top 0">Flocking and the Vicsek Model</h2>
+	  
+	  <div style="margin-left: 10%; margin-right: 10%; font-size:30px">
+	    <p  align="left" style="font-size: 30px;">To ascertain the nature of the phase transition in the case of intrinsic noise, techniques used for equilibrium systems like <b>finite-size scaling</b> and <b>short-time dynamic scaling</b> (STD scaling) can be used [8]: 
+
+	      <div style="margin-top:3%;
+			  font-size:25px;
+			  display: flex;
+			  ">
+		<!-- Column 1 -->
+		<div class="fragment" style="position:absolute;
+					     width:700px;
+					     left:10%;">
+		  <h4>Finite-size scaling</h4>
+		  System size is varied and the order parameter and susceptibility are fit to the scaling relations:
+		  \[ \phi(\eta,L)=L^{-\beta/\nu}\tilde{\phi}\left((\eta-\eta_c)L^{1/\nu}\right) \rightarrow \phi\sim(\eta_c-\eta)^\beta\]
+		  \[\chi(\eta,L)=L^{\gamma/\nu}\tilde{\chi}\left((\eta-\eta_c)L^{1/\nu}\right)  \rightarrow \chi\sim(\eta-\eta_c)^{-\gamma}\]
+		  where,
+		  \[\eta_c(\rho)\sim \rho^\kappa,\quad \kappa\approx 1/2\]
+		  <img class="zoomR"  src="media/colapse.png" width="800px"></img>
+		</div>
+
+		<div class="fragment" style="position:absolute;
+					     width:800px;
+					     right:10%;">
+		  <h4>STD scaling</h4>
+		  Systems begins in ordered/disordered phase and is "annealed" to the critical noise. The order parameter and susceptibility are fit to the scaling relations:
+		  \[ \phi(t, \eta,L)=b^{-\beta/\nu}\bar{\phi}\left(b^{-z}t,b^\nu(\eta-\eta_c)L^{1/\nu},b^{-1}L\right) \]
+		  \[\chi(t,\eta,L)\sim b^{\gamma/\nu}\bar{\chi}\left(b^{-z}t,b^\nu(\eta-\eta_c)L^{1/\nu},b^{-1}L\right)\]
+		  where,
+		  \[\xi\ll L, \quad b\equiv t^{1/z} \quad \implies \quad \phi\sim t^{-\beta/{\nu z}} \quad \chi\sim t^{\gamma/{\nu z}}\]
+
+		  <div class="fragment" style="border:1px solid black;font-size:25px;">
+		    Second order phase transition with exponents:
+		    \[
+		    \begin{align}
+		    0.42(4) \leq &\beta \leq 0.45(3) \\ 1.3(3) \leq &\nu \leq 1.6(3) \\ 1.87(4) \leq &\gamma \leq 2.3(4)
+		    \end{align}
+		    \]
+		    defining its own <b>universality class</b>.
+		  </div>
+		</div>
+	      </div>
+	  </div>
+
+
+	  <!-- References -->
+	  <p  style="position:absolute;
+		     width: 100%;
+		     bottom: -5%;
+		     left:5%;
+		     text-align: left;
+		     font-size: 23px;
+		     white-space: pre-line;
+		     ">
+	    [8] G. Baglieto and G.V. Albano. Phys. Rev. E 78, 021125 (2008).
+	  </p>
+	  
+	  <!-- Manual Page Number -->
+	  <p  style="position:absolute;
+		     width: 100%;
+		     bottom: -5%;
+		     right:5%;
+		     text-align: right;
+		     font-size: 23px;
+		     white-space: pre-line;
+		     ">5
+	  </p>
+
+	</section>
+
+	<!-- Slide 6 -->
+	<section style="height: 100%; margin-top: 3%;" >
+	  <h2 style="top 0">Flocking and the Vicsek Model</h2>
+	  
+	  <div style="margin-left: 10%; margin-right: 10%; font-size:30px">
+	    
+	    <p align="left"  style="font-size: 30px;">After Vicsek's findings, other authors came forward suggesting that the phase transition in the Vicsek model is actually first order (discontinuous).</p>
+	    <p class="fragment" align="left"  style="font-size: 30px;">The nature of the transition depends on the way the <b>noise is introduced</b> into the system:</p>
+
+	    <!-- Horizontal div -->
+	    <div style="margin-top: 3%;
+			font-size:25px;
+			display: flex;
+			">
+
+	      <!-- Left most picture -->
+	      <div class="fragment" style="
+					   margin-left:1%;">
+
+		Intrinsic/ scalar noise (○):
+		\[\theta_i(t+\Delta t) = \langle\theta_i(t)\rangle_r + \eta\xi_i\]
+		Extrinsic/ vectorial noise (□):
+		\[\theta_i(t+\Delta t) = \langle\theta_i(t) + \eta e^{i\xi_i}\rangle_r\]
+		where \[\xi_i \in [-\eta,\eta]\]
+		
+	      </div>
+
+	      <!-- Left -->		  
+	      <div class="fragment"  style="">
+		<img class="zoomR"  style="margin:0;
+					   width:700px;" data-src="media/vicsek-plots.png"/>
+		<p style="margin:1%;
+			  font-size:20px;
+			  text-align:left;">[7]</p>
+	      </div>
+
+	      <div class="fragment" style="
+					   margin-left:1%;">
+		In the extrinsic noise system:
+		<ul>
+		  <li>Discontinuous drop in the order parameter.</li>
+		  <li>There are evidences of a 1st order transition characterised by phase coexistance - Binder cumulant:</li>
+		  <p>\[G = 1-\frac{\langle\phi^4\rangle}{3\langle\phi^2\rangle^2}\]<p>
+		</ul>  
+	      </div>
+
+	      <!-- Right most picture -->
+	      <div class="fragment" style="">
+		<img class="zoomL"  style="margin:0;
+					   width:700px;" data-src="media/grenoire.png"/>
+		<p style="margin:1%;
+			  font-size:20px;
+			  text-align:left;">[7]</p>
+	      </div>
+	      
+	    </div>
+	  </div>
+	  
+	  <!-- References -->
+	  <p  style="position:absolute;
+		     width: 100%;
+		     bottom: -5%;
+		     left:5%;
+		     text-align: left;
+		     font-size: 23px;
+		     white-space: pre-line;
+		     ">
+	    [7] Gregoire G., Chat H. Phys. Rev. Lett. 92.025702	
+	  </p>
+	  
+	  <!-- Manual Page Number -->
+	  <p  style="position:absolute;
+		     width: 100%;
+		     bottom: -5%;
+		     right:5%;
+		     text-align: right;
+		     font-size: 23px;
+		     white-space: pre-line;
+		     ">6
+	  </p>
+
+	</section>
+
+	
+
+	<!-- Slide 7 -->
+	<section style="height: 100%; margin-top: 3%;" >
+	  <h2 style="top 0">Active Brownian Particles (ABPs)</h2>
+
+	  <p align="left"  style="
+				  margin-left: 10%; margin-right: 10%; font-size: 30px;">Brownian motion is the random motion of particles suspended in a fluid caused by the collisions of the particles with the atoms of the fluid. They key characteristics are:</p>
+	  <div style="display: flex;
+		      margin-left: 10%; margin-right: 10%; font-size: 30px;">
+
+	    <ul align="left" style="position:absolute;
+				    margin-left: 15%; margin-right: 10%; 
+				    left:0;
+				    font-size:25;">
+	      <li>System has no memory due to the high collision rate</li>
+	      <li>There is no preferential direction of motion</li>
+	      <li>Linear and angular momentum are preserved</li>
+	    </ul>
+	    <div style="position:absolute; 
+			right:13%;
+			font-size:26px;">
+	      \[\partial_t\rho(r,t)=D\nabla^2\rho(r,t) \implies \text{MSD}\sim Dt\]</div>
+	  </div>
+	  
+	  <div class="fragment"  style="position:absolute;
+					margin-left: 10%;
+					margin-right: 10%;
+					top:35%;
+					left:5%;
+					font-size:30px;">
+	    
+	    <p>It can be simply modelled by the Langevin Equation:</p>
+	    \[\gamma\dot{\mathbf{r}} = -\nabla U + \mathbf{\Gamma}(t)\]
+	    <video width="300px"  loop="true" src="media/2-pp.mp4" controls="true">
+	    </video>
+	    <img src="media/time-arrow.png" height="250px"; style="margin:0;" ></img>
+	  </div>
+	  
+	  <div style="position:absolute;
+		      margin-left: 10%;
+		      margin-right: 10%;
+		      left:5%;
+		      top:35%;
+		      font-size:25px;">
+	  </div>
+	  
+	  <div class="fragment" style="position:absolute;
+				       margin-left: 10%;
+				       margin-right: 10%;
+				       top:35%;
+				       right:5%;
+				       font-size:30px;">
+	    
+	    <p>To make it active we add a force:</p>
+	    \[\gamma\dot{\mathbf{r}} = -\nabla U + \mathbf{F_a}+\mathbf{\Gamma}(t)\]
+	    <video width="300px"  loop="true" src="media/2-ap.mp4" controls="true">
+	    </video>
+	    <img src="media/time-arrow.png" height="250px"; style="margin:0;" ></img>
+	  </div>
+
+	  <!-- Manual Page Number -->
+	  <p  style="position:absolute;
+		     width: 100%;
+		     bottom: -5%;
+		     right:5%;
+		     text-align: right;
+		     font-size: 23px;
+		     white-space: pre-line;
+		     ">7
+	  </p>
+
+	</section>
+
+	
+	<!-- Slide 9 -->
+	<section style="height: 100%; margin-top: 3%;" >
+	  <h2 style="top 0">Active Brownian Particles (ABPs)</h2>
+	  <div style="margin-top: 3%;font-size:30px;">
+
+	    In the case of multiple particles we must include a repulsive/attractive force between the different particles.  
+	    <div style="margin-left: 10%; margin-right: 10%;">
+	      <div class="fragment" style="position:absolute;
+					   margin-left: 10%;
+					   margin-right: 10%;
+					   left: 0;
+					   top:18%;
+					   font-size:25px;
+					   text-align:left;">
+		
+		\[
+		\begin{align}
+		\gamma \mathbf{\dot{r}}_i& = F_\text{act}\mathbf{n}_i - \nabla_i \sum_{i\neq j}U(r_{ij}) + \sqrt{2\gamma k_B T}\xi_i \\
+		\mathbf{n}_i &= (\cos\theta_i(t),\sin\theta_i(t)) \quad \text{with} \quad \dot{\theta}=\sqrt{2D_{\theta_i}}\eta_i \quad \text{and} \quad D_\theta = 3\gamma k_BT/ \sigma^2_d
+		\end{align}
+		\]		  
+	      </div>
+
+	      <div class="fragment" style="position:absolute;
+					   margin-left: 10%;
+					   margin-right: 10%;
+					   right:0%;
+					   top:21%;
+					   font-size:20px;">
+		\[
+		\begin{align}
+		&\langle\xi_i(t)\rangle=0, \quad \langle\xi_i(t)\xi_j(t^\prime)\rangle=\delta_{ij}\delta(t-t^\prime)\\
+	        &\langle\eta_i(t)\rangle=0, \quad \langle\eta_i(t)\eta_j(t^\prime)\rangle=\delta_{ij}\delta(t-t^\prime)
+		\end{align}
+		\]
+		
+	      </div>	    
+
+	      
+
+
+
+	      <div class="fragment" style="position:absolute;
+					   margin-left: 10%;
+					   margin-right: 10%;
+					   left: 0;
+					   top:39%;
+					   width:40%;
+					   font-size:25px;
+					   text-align:left;">
+
+		For the particle interaction we usually use a truncated and shifted Lennard-Jones potential:
+
+		
+		<div style="position:absolute;
+			    left:0;
+			    top:70px;">
+		  <img src="media/desmos-graph.png" width="350px" height="350px"></img>
+		</div>
+		
+		<div style="position:absolute;
+			    font-size:20px;
+			    left:270px;
+			    width:500px;
+			    top:80px;
+			    ">
+		  
+		  \[
+		  \begin{align}
+		  &U(r_{ij}) =
+		  \begin{cases}
+		  U_{LJ}(r_{ij})-U_{LJ}(r_0) && \text{for } r\leq r_0 \\
+		  0 && \text{for } r > r_0 
+		  \end{cases} \\
+		  &U_{LJ}(r) = 4\epsilon\left[\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right]
+		  \end{align}
+		  \]
+		  
+		  
+		</div>
+
+	      </div>
+
+	      <div  class="fragment" style="position:absolute;
+					    margin-left: 10%;
+					    margin-right: 10%;
+					    right: -5%;
+					    top:42%;
+					    width:50%;
+					    font-size:20px;
+					    text-align:right;">
+
+		<video width="350px" loop="true" src="media/pbp_compressed.mp4" controls="true">
+		</video>
+		<video width="350px" loop="true" src="media/abp_compressed.mp4" controls="true">
+		</video>
+	      </div>
+	      
+
+	      <div  class="fragment" style="position:absolute;
+					    margin-left: 10%;
+					    margin-right: 10%;
+					    left: 42%;
+					    top:75%;
+					    width:50%;
+					    font-size:25px;">
+
+		How do these structures - <b>Mobility Induced Phase-Separations (MIPS)</b> -  emerge in the parameter space of:
+		\[
+		\begin{align}
+		\phi_P = N\frac{\pi \sigma_D^2}{4S} &&
+		\text{Pe} = \frac{Lv_\text{act}}{D} = \frac{\sigma_D F\text{act}}{k_B T}
+		\end{align}\]
+	      </div>
+
+	      
+	    </div>
+
+	    <!-- Manual Page Number -->
+	    <p  style="position:absolute;
+		       width: 100%;
+		       bottom: -5%;
+		       right:5%;
+		       text-align: right;
+		       font-size: 23px;
+		       white-space: pre-line;
+		       ">8
+	    </p>
+
+	</section>
+
+	<!-- Slide 10 -->
+	<section style="height: 100%; margin-top: 3%;" >
+	  <h2 style="top 0">Active Brownian Particles (ABPs)</h2>
+	  <div style="margin-top: 3%;
+		      font-size:25px;
+		      display: flex;
+		      ">
+
+	    <div style="width:800px;">
+	      <img class="zoomR"  style="margin:0;" data-src="media/athermal-phase-separation.png"/>
+	    </div>
+	    
+
+	    <div class="fragment" style="width:900px;
+					 margin-top:3%;
+					 ">
+	      <p style="text-align:left;
+			">General characteristics of 2D-ABP systems:</p>
+	      
+	      <ul>
+		<li>Above a critical packing fraction and activity, large clusters form - <b>Motility Induced Phase-Separation (MIPS)</b>.</li>
+		<li>The <b>mechanism behind MIPS</b>:
+		  <ul>
+		    <li>particle symmetry</li>
+		    <li>diffusion supression for higher densities</li>
+		    <li>subdiffusive initial regime (collision time < rotational diffusion time)</li>
+								      </ul>
+		<li>Activity plays a role of attraction force between particles.</li>
+		<li>Information in the structure factor:</li>
+	      </ul>
+	      \[S(\mathbf{k})=\frac{1}{N}\langle\sum_{ij}e^{i\mathbf{k}\cdot\mathbf{r}_{ij}}\rangle\]
+	      <b>Activity induces order!</b>
+
+	    </div>
+	    
+	    <div class="fragment" style="width:800px;">
+	      <img class="zoomL"  style="margin:0;" data-src="media/6-fold.png"/>
+	      <p style="margin:1%;
+			font-size:23px;
+			text-align:left;"></p>
+	    </div>
+	  </div>
+
+	  <!-- References -->
+	  <p  style="position:absolute;
+		     width: 100%;
+		     bottom: -5%;
+		     left:5%;
+		     text-align: left;
+		     font-size: 23px;
+		     white-space: pre-line;
+		     ">
+	    [9] Fily Y. and Cristina Marchetti M.,  Phys. Rev. Lett. 108, 235702 (2012)
+	    [10] S. Redner G. <it>et al.</it>, Phys. Rev. Lett. 110, 055701 (2013).
+	  </p>
+	  
+	  <!-- Manual Page Number -->
+	  <p  style="position:absolute;
+		     width: 100%;
+		     bottom: -5%;
+		     right:5%;
+		     text-align: right;
+		     font-size: 23px;
+		     white-space: pre-line;
+		     ">9
+	  </p>
+
+	</section>
+
+
+	<!-- Slide 11 -->
+	<section style="height: 100%; margin-top: 3%;" >
+	  <h2 style="top 0">Active Brownian Particles (ABPs)</h2>
+	  <div style="margin-top: 3%;font-size:27px;
+		      display: flex;
+		      ">
+
+	    <div style="width:800px;">
+	      <img 
+		class="zoomR"  width="800px" style="margin:0;" data-src="media/full-phase-diagram.png"/>
+	      <!-- <p style="margin:1%; -->
+		      <!-- 	  font-size:23px; -->
+		      <!-- 	  text-align:left;">[16]</p> -->
+	    </div>
+	    
+
+	    <div class="fragment" style="width:900px;">
+	      <p style="text-align:left;
+			">In 2018, Digregorio <it>et al.</it> completely quantified the phase-diagram of 2D ABPs.</p>
+	      <ul>
+		<li>Orientational order parameter and its correlation,
+		  \[
+		  \begin{align}
+		  \psi_{6i}=\frac{1}{N_i}\sum_{j=1}^{N_i}e^{i6\theta_{ij}} &&
+		  g_6(r)=\frac{\langle \psi_{6i} \psi_{6j}^*\rangle_{r_{ij}=r}}{\langle |\psi_{6i}|^2\rangle}
+		  \end{align}
+		  \]
+		</li>
+		of a new phase of matter: <b>hexatic phase</b> characterised by <b>quasi-long-range orientational order and short-range positional one</b>.
+		\[
+		\begin{align}
+		g_{6_\text{liquid}}(r)\sim e^{-r/21} && &g_{6_\text{hexatic}}(r)\sim r^{1/4}\sim g_{6_\text{KTHNY}}(r)\\
+		C_{{q_0}_\text{hexatic}}(r)\sim e^{-r/11} && &C_{{q_0}_\text{solid}}(r)\sim r^{1/3}
+		\end{align}
+		\]
+		<li>Low activity disrupts order <b>inducing melting</b>.</li>
+		<li>High activity induces MIPS - rearrangement hexatic regions - prevailing over hexatic and solid phases.</li>
+	      </ul>
+	    </div>
+
+
+	    
+	    <div class="fragment"  style="width:900px;">
+	      <img 
+		class="zoomL"  width="900px" style="margin:0;" data-src="media/states-matter.png"/>
+	    </div>
+	    
+	  </div>
+
+	  <!-- References -->
+	  <p  style="position:absolute;
+		     width: 100%;
+		     bottom: -5%;
+		     left:5%;
+		     text-align: left;
+		     font-size: 23px;
+		     white-space: pre-line;
+		     ">
+	    [11] Digregorio P. <it>et al.</it>,  Phys. Rev. Lett. 121, 098003 (2018)
+	  </p>
+	  
+	  <!-- Manual Page Number -->
+	  <p  style="position:absolute;
+		     width: 100%;
+		     bottom: -5%;
+		     right:5%;
+		     text-align: right;
+		     font-size: 23px;
+		     white-space: pre-line;
+		     ">10
+	  </p>
+
+	</section>
+	
+	
+	<!-- Slide 12 -->
+	<section style="height: 100%; margin-top: 3%;" >
+	  <h2 style="top 0">Conclusions</h2>
+	  
+	  <div style="margin-left: 10%; margin-right: 10%; margin-top: 5%; font-size:35px;">
+	    <ul>
+	      <li>The techniques used in equilibrium systems can be applied and our theory extended to active systems.</li>
+	      <li>The analysis of these systems is more <b>complex</b> and <b>new behaviours</b> emerge.</li>
+	      <li class="fragment">Active systems are all around us - <b>we are made of active matter</b>.</li>
+	    </ul>
+	  </div>
+
+	  <div class="fragment" style="position:absolute;
+				       font-size:40px;
+				       display: flex;
+				       left:785px;
+				       bottom:500px;
+				       ">
+	    \[\xrightarrow{\text{decreasing length scale}}\]
+	  </div>
+	  <div class="fragment" style="position:absolute;
+				       font-size:27px;
+				       display: flex;
+				       left:150px;
+				       bottom:200px;
+				       ">
+	    <div style="width:450px;">
+	      <video width="450px" loop="true" src="media/haji.mp4" controls="true">
+	      </video>
+	      <p style="margin:1%;
+			font-size:23px;
+			text-align:left;">[12]</p>
+	    </div>
+	    <div style="width:460px;">
+	      <video width="460px" loop="true" src="media/ants.mp4" controls="true">
+	      </video>
+	      <p style="margin:1%;
+			font-size:23px;
+			text-align:left;">[13]</p>
+	    </div>
+	    <div style="width:340px;">
+	      <video  loop="true" src="media/sperm.mp4" controls="true">
+	      </video>
+	      <p style="margin:1%;
+			font-size:23px;
+			text-align:left;">[14]</p>
+	    </div>
+	    <div style="width:450px;">
+	      <video width="325px" loop="true" src="media/mitosis.mp4" style="overflow: hidden;
+									      display: block;" controls="true">
+	      </video>
+	      <p style="margin:1%;
+			font-size:23px;
+			text-align:left;">[15]</p>
+	    </div>
+	  </div>
+
+	  
+	  
+	  <p  style="position:absolute;
+		     width: 100%;
+		     bottom: -5%;
+		     left:5%;
+		     text-align: left;
+		     font-size: 23px;
+		     white-space: pre-line;
+		     ">		
+	    [12] https://www.youtube.com/watch?v=dUiqS7Iss8g
+	    [13] NY Times: https://www.youtube.com/watch?v=opHsaJ1hxuc
+	    [14] Polymaths Lab - University of Bristol
+	    [15] https://www.youtube.com/watch?v=DDqDmsQwfLU
+	  </p>
+	  
+	  <!-- Manual Page Number -->
+	  <p  style="position:absolute;
+		     width: 100%;
+		     bottom: -5%;
+		     right:5%;
+		     text-align: right;
+		     font-size: 23px;
 		     white-space: pre-line;
 		     ">11
 	  </p>
 
 	  
-	  </section>
+	</section>
 
+	<section style="height: 100%; margin-top: 3%;" >
+	  <h2 style="top 0">3D Vicsek</h2>
+	  <img src="media/backup-1.png"></img>
+	</section>
+
+	
+	<section style="height: 100%; margin-top: 3%;" >
+	  <h2 style="top 0">3D ABPs</h2>
+	  <img src="media/backup-2.png"></img>
+	</section>
 
 	</div>
-      </div>
+	</div>
 
-      <script src="https://cdn.jsdelivr.net/npm/@explorables/horde_of_the_flies"></script>
-      <script src="math/math.js"></script>
-      <script src="dist/reveal.js"></script>
-	    <script>
-	      Reveal.initialize({
-		  // The "normal" size of the presentation, aspect ratio will
-		  // be preserved when the presentation is scaled to fit different
-		  // resolutions. Can be specified using percentage units.
-		  width: "1920",
-		  height: "1080",
+	<script src="https://cdn.jsdelivr.net/npm/@explorables/horde_of_the_flies"></script>
+	<script src="math/math.js"></script>
+	<script src="dist/reveal.js"></script>
+	<script>
+	  Reveal.initialize({
+	      // The "normal" size of the presentation, aspect ratio will
+	      // be preserved when the presentation is scaled to fit different
+	      // resolutions. Can be specified using percentage units.
+	      width: "1920",
+	      height: "1080",
 
-		  // Factor of the display size that should remain empty around
-		  // the content
-		  margin: 0.04,
+	      // Factor of the display size that should remain empty around
+	      // the content
+	      margin: 0.04,
 
-		  // Bounds for smallest/largest possible scale to apply to content
-		  minScale: 0.2,
-		  maxScale: 2.0,
+	      // Bounds for smallest/largest possible scale to apply to content
+	      minScale: 0.2,
+	      maxScale: 2.0,
 
-		  slideNumber: false,
+	      slideNumber: false,
 
-		  mathjax2: {
-		      // config: 'TeX-AMS_HTML-full',
-		      TeX: {
-			  Macros: {
-			      R: '\\mathbb{R}',
-			      set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
-			  }
+	      mathjax2: {
+		  // config: 'TeX-AMS_HTML-full',
+		  TeX: {
+		      Macros: {
+			  R: '\\mathbb{R}',
+			  set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
 		      }
-		  },
+		  }
+	      },
 
-		 
-
-		  plugins: [ RevealMath.MathJax2 ]
-	      });
-	      horde_of_the_flies.load("explorable_container")
 	      
-	    </script>
 
-</body>
+	      plugins: [ RevealMath.MathJax2 ]
+	  });
+	  horde_of_the_flies.load("explorable_container")
+	  
+	</script>
+
+  </body>
 </html>
-
-
-<!-- NOTES: -->
-<!-- - what order phase transition -->
-<!-- - why the system is out of equilibrium -->
-<!-- - what are the critical exponents -->
